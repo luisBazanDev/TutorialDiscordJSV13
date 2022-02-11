@@ -1,0 +1,30 @@
+{
+  "name": "tutorial-discordjs-v13",
+  "version": "1.0.0",
+  "description": "Un tutorial para mi canal de youtube",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luisBazanDev/TutorialDiscordJSV13.git"
+  },
+  "keywords": [
+    "discord",
+    "discordjs",
+    "tutorial",
+    "v13"
+  ],
+  "author": "Luis Bazán",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luisBazanDev/TutorialDiscordJSV13/issues"
+  },
+  "homepage": "https://github.com/luisBazanDev/TutorialDiscordJSV13#readme",
+  "dependencies": {
+    "discord.js": "^13.6.0",
+    "dotenv": "^16.0.0"
+  }
+}
