@@ -1,5 +1,5 @@
 const dotenv = require('dotenv');
-const { Client, Intents } = require('discord.js');
+const { Client, Intents, MessageEmbed } = require('discord.js');
 
 dotenv.config();
 const prefix = "!";
@@ -37,7 +37,20 @@ client.on('messageCreate', mensaje => {
         mensaje.channel.send(argumentos.join(' '));
         mensaje.delete();
     } else if(comando === 'perfil') {
-        mensaje.reply(`Hola ${mensaje.author.username} Tu id es: ${mensaje.author.id}`)
+        let fechaCreacion = new Date(mensaje.author.createdTimestamp)
+        let fechaUnion = new Date(mensaje.member.joinedAt)
+        let embed = new MessageEmbed();
+        embed.setTitle(`Perfil de ${mensaje.author.username}`);
+        embed.addField('Apodo en el servidor', mensaje.member.displayName, true);
+        embed.addField('Id', mensaje.author.id, true);
+        embed.addField('Su cuenta se creo', fechaCreacion.toString());
+        embed.addField('Se unio al servidor', fechaUnion.toString());
+        embed.setColor(mensaje.member.displayHexColor);
+        embed.setThumbnail(mensaje.member.displayAvatarURL());
+        embed.setImage('https://google.com/logo.png')
+        mensaje.reply({
+            embeds: [embed]
+        })
     }
 });
 
