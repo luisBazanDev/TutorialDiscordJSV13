@@ -14,6 +14,11 @@ const client = new Client({
 
 client.once('ready', () => {
     console.log('Estoy listo!');
+    client.user.setActivity({
+        type: 'STREAMING',
+        name: 'Mi servidor de discord',
+        url: 'https://twitch.tv/luisbazan'
+    })
 });
 
 client.on('messageCreate', mensaje => {
@@ -31,6 +36,8 @@ client.on('messageCreate', mensaje => {
         }
         mensaje.channel.send(argumentos.join(' '));
         mensaje.delete();
+    } else if(comando === 'perfil') {
+        mensaje.reply(`Hola ${mensaje.author.username} Tu id es: ${mensaje.author.id}`)
     }
 });
 
