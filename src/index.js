@@ -2,6 +2,7 @@ const dotenv = require('dotenv');
 const { Client, Intents } = require('discord.js');
 
 dotenv.config();
+const prefix = "!";
 
 const client = new Client({
     intents: [
@@ -16,8 +17,20 @@ client.once('ready', () => {
 });
 
 client.on('messageCreate', mensaje => {
-    if (mensaje.content === 'ping') {
+    if(!mensaje.content.startsWith(prefix) || mensaje.author.bot)return;
+
+    let argumentos = mensaje.content.trim().split(' ');
+    let comando = argumentos.shift().slice(prefix.length);
+
+    if (comando === 'ping') {
         mensaje.reply('pong');
+    } else if (comando === 'decir') {
+        if(argumentos.length < 1) {
+            mensaje.reply('Dime que decir.');
+            return;
+        }
+        mensaje.channel.send(argumentos.join(' '));
+        mensaje.delete();
     }
 });
 
