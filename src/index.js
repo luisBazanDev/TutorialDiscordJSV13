@@ -1,8 +1,9 @@
 const dotenv = require('dotenv');
 const { Client, Intents, MessageEmbed } = require('discord.js');
+const config = require('../config.json');
 
 dotenv.config();
-const prefix = "!";
+const prefix = config.prefix;
 
 const client = new Client({
     intents: [
